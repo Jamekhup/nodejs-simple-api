@@ -5,6 +5,18 @@ const CategorySchema = mongoose.Schema({
         required: [true, 'Please enter category name'], 
         unique: true 
     },
+    icon:{
+        type: String,
+        default: ''
+    },
+    color:{
+        type: String,
+        default: ''
+    },
+    created_at:{
+        type: Date,
+        default: Date.now
+    }
 });
 
 const Category = mongoose.model('Category', CategorySchema);

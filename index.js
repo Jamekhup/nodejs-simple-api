@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 const productRoute = require('./routes/product.route.js');
 const categoryRoute = require('./routes/category.route.js');
+const userRoute = require('./routes/user.route.js');
 
 const PORT = 5000 || process.env.PORT;
 const API = process.env.API_URL;
@@ -29,8 +30,10 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     
 });
 
+app.use(`${API}/`, userRoute);
 app.use(`${API}/product`, productRoute);
 app.use(`${API}/category`, categoryRoute);
+
 
 
 app.listen(PORT, () => {
