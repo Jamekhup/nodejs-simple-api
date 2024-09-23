@@ -14,12 +14,21 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: [true, 'Password is required'],
         minlength: [6, 'Password must be at least 6 characters long'],
-        select: false
     },
     isAdmin:{
         type: Boolean,
         default: false
     },
+    verifyToken: {
+        type: String,
+        required: false,
+    },
+
+    isVerified:{
+        type: Boolean,
+        default: false
+    },
+
     street:{
         type: String,
         required: false
@@ -35,6 +44,19 @@ const UserSchema = mongoose.Schema({
     created_at:{
         type: Date,
         default: Date.now
+    }
+}, {
+    toJSON: {
+        transform: (doc, ret) => {
+            delete ret.password;
+            return ret;
+        }
+    },
+    toObject: {
+        transform: (doc, ret) => {
+            delete ret.password; 
+            return ret;
+        }
     }
 });
 

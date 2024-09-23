@@ -4,7 +4,7 @@ const {getUsers,Register,verifyAccount, login, forgotPassword, ResetPassword, lo
 
 router.get('/users',getUsers);
 router.post('/register',Register);
-router.post('/verify-account',verifyAccount);
+router.post('/verify-email/:token',verifyAccount);
 router.post('/login', login);
 router.post('/forgot-password', forgotPassword);
 router.put('/reset-password/:token', ResetPassword);
